@@ -1,57 +1,60 @@
 {
-    {
+    "0": {
         "name": "Nowy Rok", 
         "day": "1", 
         "month": "1"
     },
-    {
+    "1": {
         "name": "Trzech Króli", 
         "day": "6", 
         "month": "1"
     },
-    {
+    "2": {
         "name": "Święto Pracy", 
         "day": "1", 
         "month": "5"
     },
-    {
+    "3": {
         "name": "Wielkanoc", 
         "day": "4", 
         "month": "4"
     },
-    {
+    "4": {
         "name": "Święto Konstytucji 3 Maja", 
         "day": "3", 
         "month": "5"
     },
-    {
+    "5": {
         "name": "Boże Ciało", 
         "day": "23", 
         "month": "5"
     },
-    {
+    "6": {
         "name": "Zielone Świątki", 
         "day": "2", 
-        "month": "6"},
-    {
+        "month": "6"
+    },
+    "7": {
         "name": "Święto Wojska Polskiego", 
         "day": "15", 
-        "month": "8"},
-    {
+        "month": "8"
+    },
+    "8": {
         "name": "Wniebowzięcie Najświętszej Maryi Panny", 
         "day": "15", 
-        "month": "8"},
-    {
+        "month": "8"
+    },
+    "9": {
         "name": "Narodowe Święto Niepodległości", 
         "day": "11", 
         "month": "11"
     },
-    {
+    "10": {
         "name": "Święto Bożego Narodzenia", 
         "day": "25", 
         "month": "12"
     },
-    {
+    "11": {
         "name": "Święto Bożego Narodzenia", 
         "day": "26", 
         "month": "12"
