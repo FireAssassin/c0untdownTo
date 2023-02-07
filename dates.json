@@ -1,14 +1,14 @@
 {
-    {name: 'Nowy Rok', date: '01-01'},
-    {name: 'Trzech Króli', date: '06-01'},
-    {name: 'Święto Pracy', date: '01-05'},
-    {name: 'Wielkanoc', date: '04-04'},
-    {name: 'Święto Konstytucji 3 Maja', date: '03-05'},
-    {name: 'Boże Ciało', date: '23-05'},
-    {name: 'Zielone Świątki', date: '20-06'},
-    {name: 'Święto Wojska Polskiego', date: '15-08'},
-    {name: 'Wniebowzięcie Najświętszej Maryi Panny', date: '15-08'},
-    {name: 'Narodowe Święto Niepodległości', date: '11-11'},
-    {name: 'Święto Bożego Narodzenia', date: '25-12'},
-    {name: 'Święto Bożego Narodzenia', date: '26-12'}
+    "0": {"name": "Nowy Rok", "day": "1", "month": "1"},
+    "1": {"name": "Trzech Króli", "day": "6", "month": "1"},
+    "2": {"name": "Święto Pracy", "day": "1", "month": "5"},
+    "3": {"name": "Wielkanoc", "day": "4", "month": "4"},
+    "4": {"name": "Święto Konstytucji 3 Maja", "day": "3", "month": "5"},
+    "5": {"name": "Boże Ciało", "day": "23", "month": "5"},
+    "6": {"name": "Zielone Świątki", "day": "2", "month": "6"},
+    "7": {"name": "Święto Wojska Polskiego", "day": "15", "month": "8"},
+    "8": {"name": "Wniebowzięcie Najświętszej Maryi Panny", "day": "15", "month": "8"},
+    "9": {"name": "Narodowe Święto Niepodległości", "day": "11", "month": "11"},
+    "10": {"name": "Święto Bożego Narodzenia", "day": "25", "month": "12"},
+    "11": {"name": "Święto Bożego Narodzenia", "day": "26", "month": "12"}
 }
