@@ -43,5 +43,10 @@
         "name": "Boże Narodzenie", 
         "day": "24", 
         "month": "12"
+    },
+    "11": {
+        "name": "Wakacje", 
+        "day": "24", 
+        "month": "6"
     }
 }
