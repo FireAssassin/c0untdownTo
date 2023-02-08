@@ -34,29 +34,14 @@
         "day": "2", 
         "month": "6"
     },
-    "7": {
-        "name": "Święto Wojska Polskiego", 
-        "day": "15", 
-        "month": "8"
-    },
-    "8": {
-        "name": "Wniebowzięcie Najświętszej Maryi Panny", 
-        "day": "15", 
-        "month": "8"
-    },
     "9": {
         "name": "Narodowe Święto Niepodległości", 
         "day": "11", 
         "month": "11"
     },
     "10": {
-        "name": "Święto Bożego Narodzenia", 
-        "day": "25", 
-        "month": "12"
-    },
-    "11": {
-        "name": "Święto Bożego Narodzenia", 
-        "day": "26", 
+        "name": "Boże Narodzenie", 
+        "day": "24", 
         "month": "12"
     }
 }

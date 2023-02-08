@@ -16,7 +16,7 @@ class Countdown {
         }
         this.interval = setInterval(() => {
             const timeLeft = this.getTimeLeft();
-            this.span.innerHTML = `${timeLeft.months} months, ${timeLeft.weeks} weeks, ${timeLeft.days} days, ${timeLeft.hours} hours, ${timeLeft.minutes} minutes, ${timeLeft.seconds} seconds`;
+            this.span.innerHTML = `${timeLeft.months} mies. ${timeLeft.weeks} tyg. ${timeLeft.days} dni | ${timeLeft.hours}:${timeLeft.minutes}:${timeLeft.seconds}`;
             if (timeLeft.total <= 0) {
                 this.span.innerHTML = "Done!";
                 clearInterval(this.interval);
