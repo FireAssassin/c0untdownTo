@@ -47,7 +47,7 @@ class Countdown {
 fetch('https://fireassassin848.github.io/c0untdownTo/dates.json')
     .then(response => response.json())
     .then(json => {
-        for (i = 0; i < Object.keys(data).length; i++) {
+        for (i = 0; i < Object.keys(json).length; i++) {
 
             let date = json[i]['month']+" "+json[i]['day']+" "+new Date().getFullYear()
 
