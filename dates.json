@@ -3,60 +3,60 @@
         "name": "Nowy Rok", 
         "day": "1", 
         "month": "1",
-	"isNatural": "false"
+	"isNatural": "true"
     },
     "1": {
         "name": "Trzech Króli", 
         "day": "6", 
         "month": "1",
-	"isNatural": "false"
+	"isNatural": "true"
     },
     "2": {
         "name": "Święto Pracy", 
         "day": "1", 
         "month": "5",
-	"isNatural": "false"
+	"isNatural": "true"
     },
     "3": {
         "name": "Wielkanoc", 
         "day": "4", 
         "month": "4",
-	"isNatural": "false"
+	"isNatural": "true"
     },
     "4": {
         "name": "Święto Konstytucji 3 Maja", 
         "day": "3", 
         "month": "5",
-	"isNatural": "false"
+	"isNatural": "true"
     },
     "5": {
         "name": "Boże Ciało", 
         "day": "23", 
         "month": "5",
-	"isNatural": "false"
+	"isNatural": "true"
     },
     "6": {
         "name": "Zielone Świątki", 
         "day": "2", 
         "month": "6",
-	"isNatural": "false"
+	"isNatural": "true"
     },
     "7": {
         "name": "Narodowe Święto Niepodległości", 
         "day": "11", 
         "month": "11",
-	"isNatural": "false"
+	"isNatural": "true"
     },
     "8": {
         "name": "Boże Narodzenie", 
         "day": "24", 
         "month": "12",
-	"isNatural": "false"
+	"isNatural": "true"
     },
     "9": {
         "name": "Wakacje", 
         "day": "24", 
         "month": "6",
-	"isNatural": "false"
+	"isNatural": "true"
     }
 }
