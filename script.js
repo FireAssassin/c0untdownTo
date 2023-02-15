@@ -86,7 +86,7 @@ function add() {
         "date": date,
         "isNatural": isNatural
     }
-    localStorage.setItem(clength, JSON.stringify(data));
+    localStorage.setItem(makeUniqueClass(), JSON.stringify(data));
     location.reload();
 }
 
