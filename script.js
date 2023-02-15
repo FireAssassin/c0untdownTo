@@ -1,10 +1,21 @@
+let count = 1;
+
 class Countdown {
-    constructor(date, name) {
+    constructor(date, name, isNatural, id) {
+        this.isnatural = isNatural;
         this.name = name;
         this.date = date;
+        this.id = id;
         this.countdown = document.createElement("div");
         this.countdown.classList.add("countdown");
-        this.countdown.innerHTML = `<span class="titlecd">${this.name}</span><br><span class="cd"></span>`;
+        this.countdown.classList.add(makeUniqueClass());
+        this.countdown.classList.add("grid-item");
+        if (this.id != undefined) this.countdown.id = this.id;
+        if (this.isnatural == 'true') {
+            this.countdown.innerHTML = `<span class="titlecd">${this.name}</span><br><span class="cd"></span>`;
+        } else {
+            this.countdown.innerHTML = `<span class="titlecd">${this.name}</span><span class="delete">Del.</span><br><span class="cd"></span>`;
+        }
         this.title = this.countdown.querySelector("span.titlecd");
         this.span = this.countdown.querySelector("span.cd");
         this.interval = null;
@@ -25,13 +36,16 @@ class Countdown {
     }
 
     getTimeLeft() {
-        const total = Date.parse(this.date) - Date.parse(new Date());
-        const seconds = Math.floor((total / 1000) % 60);
-        const minutes = Math.floor((total / 1000 / 60) % 60);
-        const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
-        const days = Math.floor(total / (1000 * 60 * 60 * 24) % 7);
-        const weeks = Math.floor(total / (1000 * 60 * 60 * 24 * 7) % 4);
-        const months = Math.floor(total / (1000 * 60 * 60 * 24 * 7 * 4));
+        let total = Date.parse(this.date) - Date.parse(new Date());
+        let seconds = Math.floor((total / 1000) % 60);
+        let minutes = Math.floor((total / 1000 / 60) % 60);
+        let hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+        let days = Math.floor(total / (1000 * 60 * 60 * 24) % 7);
+        let weeks = Math.floor(total / (1000 * 60 * 60 * 24 * 7) % 4);
+        let months = Math.floor(total / (1000 * 60 * 60 * 24 * 7 * 4));
+        seconds < 10 ? seconds = "0" + seconds : true;
+        minutes < 10 ? minutes = "0" + minutes : true;
+        hours < 10 ? hours = "0" + hours : true;
         return {
             total,
             months,
@@ -44,17 +58,87 @@ class Countdown {
     }
 }
 
-fetch('https://fireassassin848.github.io/c0untdownTo/dates.json')
+function makeUniqueClass() {
+    this.uniqueClass = "";
+    this.possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (var i = 0; i < 7; i++)
+        this.uniqueClass += this.possible.charAt(Math.floor(Math.random() * this.possible.length));
+    count++;
+    return this.uniqueClass + count;
+}
+
+function readData() {
+    data = JSON.parse(localStorage.getItem("data"))
+    return data;
+}
+
+function add() {
+    let clength = localStorage.length;
+    let name = document.getElementById("name").value;
+    let date = document.getElementById("date").value;
+    let isNatural = "false";
+    let data = {
+        "name": name,
+        "date": date,
+        "isNatural": isNatural
+    }
+    localStorage.setItem(clength, JSON.stringify(data));
+    location.reload();
+}
+
+function remove(todelete) {
+    localStorage.removeItem(todelete);
+}
+
+fetch('./dates.json')
     .then(response => response.json())
     .then(json => {
-        for (i = 0; i < Object.keys(json).length; i++) {
+        const lengthExtFile = Object.keys(json).length;
+        const lengthLocData = localStorage.length;
+        if (lengthLocData > 0) {
+            for (i = 0; i < lengthLocData; i++) {
+                let key = localStorage.key(i);
+                let data = JSON.parse(localStorage.getItem(key));
+                let date = data['date']
+                if (new Date(date) > new Date()) {
+                    const countdown = new Countdown(date, data['name'], data['isNatural'], key);
+                    countdown.start();
+                    document.body.querySelector("div.grid-container").appendChild(countdown.countdown);
+                }
+            }
+            document.querySelectorAll("span[class=delete]").forEach((button) => {
+                button.addEventListener("click", (element) => {
+                    element['target']['parentElement'].remove();
+                    remove(element['target']['parentElement']['id'])
+                });
+            });
+        }
 
-            let date = json[i]['month']+" "+json[i]['day']+" "+new Date().getFullYear()
-
+        for (i = 0; i < lengthExtFile; i++) {
+            let date = new Date().getFullYear() + "-" + json[i]['date']
             if (new Date(date) > new Date()) {
-                const countdown = new Countdown(date, json[i]['name']);
+                const countdown = new Countdown(date, json[i]['name'], json[i]['isNatural']);
                 countdown.start();
-                document.body.appendChild(countdown.countdown);
+                document.body.querySelector("div.grid-container").appendChild(countdown.countdown);
             }
         }
     })
+
+
+
+
+/*saveData({
+    0: {
+        "name": "test",
+        "day": "25",
+        "month": "12",
+        "isNatural": "false"
+    },
+    1: {
+        "name": "test",
+        "day": "25",
+        "month": "12",
+        "isNatural": "false"
+    }
+})
+readData()*/

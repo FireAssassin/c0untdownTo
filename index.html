@@ -4,11 +4,18 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>c0untdownTo</title>
+        <title>Countdown</title>
         <script src="./script.js"></script>
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-        
+        <script>document.body.innerText = location.port;</script>
+        Własny licznik: 
+        <input id="name" placeholder="Nazwa">
+        <input id="date" type="datetime-local">
+        <button class="add" onclick="add()">Dodaj</button>
+        <hr>
+        <div class="grid-container">
+        </div>
     </body>
 </html>
