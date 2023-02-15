@@ -29,7 +29,7 @@ class Countdown {
             const timeLeft = this.getTimeLeft();
             this.span.innerHTML = `${timeLeft.months} mies. ${timeLeft.weeks} tyg. ${timeLeft.days} dni | ${timeLeft.hours}:${timeLeft.minutes}:${timeLeft.seconds}`;
             if (timeLeft.total <= 0) {
-                this.span.innerHTML = "Done!";
+                this.span.innerHTML = "Zakończone!";
                 clearInterval(this.interval);
             }
         }, 1000);
@@ -76,6 +76,10 @@ function add() {
     let clength = localStorage.length;
     let name = document.getElementById("name").value;
     let date = document.getElementById("date").value;
+    if (date == "") {
+        alert("Proszę wpisać rok, miesiąc, dzień, godzinę oraz minuty");
+        return;
+}
     let isNatural = "false";
     let data = {
         "name": name,

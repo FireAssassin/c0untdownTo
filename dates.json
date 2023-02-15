@@ -10,13 +10,13 @@
         "isNatural": "true"
     },
     "2": {
-        "name": "Święto Pracy",
-        "date": "05-01T06:00",
+        "name": "Wielkanoc",
+        "date": "04-04T05:00",
         "isNatural": "true"
     },
     "3": {
-        "name": "Wielkanoc",
-        "date": "04-04T05:00",
+        "name": "Święto Pracy",
+        "date": "05-01T06:00",
         "isNatural": "true"
     },
     "4": {
@@ -35,18 +35,18 @@
         "isNatural": "true"
     },
     "7": {
+        "name": "Wakacje",
+        "date": "06-24T15:00",
+        "isNatural": "true"
+    },
+    "8": {
         "name": "Narodowe Święto Niepodległości",
         "date": "11-11T06:00",
         "isNatural": "true"
     },
-    "8": {
+    "9": {
         "name": "Boże Narodzenie",
         "date": "12-24T18:00",
-        "isNatural": "true"
-    },
-    "9": {
-        "name": "Wakacje",
-        "date": "06-24T15:00",
         "isNatural": "true"
     }
 }
