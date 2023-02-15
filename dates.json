@@ -1,52 +1,52 @@
 {
     "0": {
         "name": "Nowy Rok",
-        "date": "01-01T12:00",
+        "date": "01-01T00:00",
         "isNatural": "true"
     },
     "1": {
         "name": "Trzech Króli",
-        "date": "01-06T12:00",
+        "date": "01-06T06:00",
         "isNatural": "true"
     },
     "2": {
         "name": "Święto Pracy",
-        "date": "05-01T12:00",
+        "date": "05-01T06:00",
         "isNatural": "true"
     },
     "3": {
         "name": "Wielkanoc",
-        "date": "04-04T12:00",
+        "date": "04-04T05:00",
         "isNatural": "true"
     },
     "4": {
         "name": "Święto Konstytucji 3 Maja",
-        "date": "05-03T12:00",
+        "date": "05-03T06:00",
         "isNatural": "true"
     },
     "5": {
         "name": "Boże Ciało",
-        "date": "05-23T12:00",
+        "date": "05-23T07:00",
         "isNatural": "true"
     },
     "6": {
         "name": "Zielone Świątki",
-        "date": "06-02T12:00",
+        "date": "06-02T07:00",
         "isNatural": "true"
     },
     "7": {
         "name": "Narodowe Święto Niepodległości",
-        "date": "11-11T12:00",
+        "date": "11-11T06:00",
         "isNatural": "true"
     },
     "8": {
         "name": "Boże Narodzenie",
-        "date": "12-24T12:00",
+        "date": "12-24T18:00",
         "isNatural": "true"
     },
     "9": {
         "name": "Wakacje",
-        "date": "06-24T12:00",
+        "date": "06-24T15:00",
         "isNatural": "true"
     }
 }

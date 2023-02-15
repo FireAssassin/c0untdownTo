@@ -22,9 +22,9 @@ class Countdown {
     }
 
     start() {
-        if (new Date(this.date) < new Date()) {
-            throw new Error("Date is old");
-        }
+        // if (new Date(this.date) < new Date()) {
+        //     throw new Error("Date is old");
+        // }
         this.interval = setInterval(() => {
             const timeLeft = this.getTimeLeft();
             this.span.innerHTML = `${timeLeft.months} mies. ${timeLeft.weeks} tyg. ${timeLeft.days} dni | ${timeLeft.hours}:${timeLeft.minutes}:${timeLeft.seconds}`;
@@ -100,11 +100,13 @@ fetch('./dates.json')
                 let key = localStorage.key(i);
                 let data = JSON.parse(localStorage.getItem(key));
                 let date = data['date']
-                if (new Date(date) > new Date()) {
+                if (new Date(new Date().getTime + (14 * 24 * 60 * 60 * 1000)) > new Date(date)) {
+                    date = new Date().getFullYear()+1 + "-" + data['date']
+                }
                     const countdown = new Countdown(date, data['name'], data['isNatural'], key);
                     countdown.start();
                     document.body.querySelector("div.grid-container").appendChild(countdown.countdown);
-                }
+
             }
             document.querySelectorAll("span[class=delete]").forEach((button) => {
                 button.addEventListener("click", (element) => {
@@ -116,11 +118,12 @@ fetch('./dates.json')
 
         for (i = 0; i < lengthExtFile; i++) {
             let date = new Date().getFullYear() + "-" + json[i]['date']
-            if (new Date(date) > new Date()) {
+            if (new Date(new Date().getTime() + (14 * 24 * 60 * 60 * 1000)) > new Date(date)) {
+                date = new Date().getFullYear()+1 + "-" + json[i]['date']
+            }
                 const countdown = new Countdown(date, json[i]['name'], json[i]['isNatural']);
                 countdown.start();
                 document.body.querySelector("div.grid-container").appendChild(countdown.countdown);
-            }
         }
     })
 
