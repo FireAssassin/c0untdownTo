@@ -1,8 +1,53 @@
 body {
     margin: 0;
+    padding: 11px;
     color: aliceblue;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: #212121;
+}
+
+.title {
+    /* display: flex; */
+    border: 4px solid #121212;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 0px 0px 3px 0px;
+}
+
+name {
+    font-size: 6vw;
+    /* color: #170bc2; */
+    font-variant: small-caps;
+}
+
+.today {
+    float: right;
+    font-size: 3vw;
+}
+
+.addform {
+    display: flex;
+    border: 4px solid #121212;
+    border-radius: 8px;
+    padding: 5px;
+
+}
+
+.nameaddform {
+    width: fit-content;
+    font-size: 4vw;
+}
+
+.addbutton {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 3.75vw;
+    padding: 15px;
+    background-color: #121212;
+    color: aliceblue
+}
+
+.addbutton:active {
+    background-color: #191919;
 }
 
 .grid-container {
@@ -11,7 +56,7 @@ body {
 }
 
 .grid-item {
-    max-width: 49%;
+    max-width: 46%;
     margin: 10px;
     background-color: #ccc;
 }
@@ -38,11 +83,21 @@ span.delete {
 }
 
 input {
+    margin: 0;
     background-color: #313131;
+    border: 2px solid #1a1a1a;
+    border-radius: 5px;
     color: aliceblue;
-    border: none;
+    font-size: 3vw;
+    width: 70%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.input-container:nth-child(1) {
+    margin: 0px 0px 100px 0px;
 }
 
 hr {
-    border: solid #444444 1px;
+    border: solid #121212 2px;
 }
+

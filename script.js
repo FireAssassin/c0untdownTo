@@ -1,4 +1,5 @@
-let count = 1;
+const key = "V";
+let count = 1;//#f0370e
 
 class Countdown {
     constructor(date, name, isNatural, id) {
@@ -11,7 +12,7 @@ class Countdown {
         this.countdown.classList.add(makeUniqueClass());
         this.countdown.classList.add("grid-item");
         if (this.id != undefined) this.countdown.id = this.id;
-        if (this.isnatural == 'true') {
+        if (this.isnatural == true) {
             this.countdown.innerHTML = `<span class="titlecd">${this.name}</span><br><span class="cd"></span>`;
         } else {
             this.countdown.innerHTML = `<span class="titlecd">${this.name}</span><span class="delete">Del.</span><br><span class="cd"></span>`;
@@ -27,7 +28,7 @@ class Countdown {
         // }
         this.interval = setInterval(() => {
             const timeLeft = this.getTimeLeft();
-            this.span.innerHTML = `${timeLeft.months} mies. ${timeLeft.weeks} tyg. ${timeLeft.days} dni | ${timeLeft.hours}:${timeLeft.minutes}:${timeLeft.seconds}`;
+            this.span.innerHTML = timeLeft;
             if (timeLeft.total <= 0) {
                 this.span.innerHTML = "Zakończone!";
                 clearInterval(this.interval);
@@ -43,18 +44,14 @@ class Countdown {
         let days = Math.floor(total / (1000 * 60 * 60 * 24) % 7);
         let weeks = Math.floor(total / (1000 * 60 * 60 * 24 * 7) % 4);
         let months = Math.floor(total / (1000 * 60 * 60 * 24 * 7 * 4));
-        seconds < 10 ? seconds = "0" + seconds : true;
-        minutes < 10 ? minutes = "0" + minutes : true;
-        hours < 10 ? hours = "0" + hours : true;
-        return {
-            total,
-            months,
-            weeks,
-            days,
-            hours,
-            minutes,
-            seconds,
-        };
+        let result = ``;
+        months > 0 ? result += months + " mies. " : true;
+        weeks > 0 ? result += weeks + " tyg. " : true;
+        days > 0 ? result += days + " dni " : true;
+        hours < 10 ? result += "0" + hours + ":" : result += hours + ":";
+        minutes < 10 ? result += "0" + minutes + ":" : result += minutes + ":";
+        seconds < 10 ? result += "0" + seconds : result += seconds;
+        return result;
     }
 }
 
@@ -67,11 +64,6 @@ function makeUniqueClass() {
     return this.uniqueClass + count;
 }
 
-function readData() {
-    data = JSON.parse(localStorage.getItem("data"))
-    return data;
-}
-
 function add() {
     let clength = localStorage.length;
     let name = document.getElementById("name").value;
@@ -79,12 +71,11 @@ function add() {
     if (date == "") {
         alert("Proszę wpisać rok, miesiąc, dzień, godzinę oraz minuty");
         return;
-}
-    let isNatural = "false";
+    }
     let data = {
         "name": name,
         "date": date,
-        "isNatural": isNatural
+        "isNatural": false
     }
     localStorage.setItem(makeUniqueClass(), JSON.stringify(data));
     location.reload();
@@ -93,6 +84,34 @@ function add() {
 function remove(todelete) {
     localStorage.removeItem(todelete);
 }
+
+document.addEventListener("keypress", (e) => {
+    if ((e.code).charAt(3) == "D"
+        && e.ctrlKey == true
+        && e.shiftKey == true) {
+        if (document.querySelector("h1.port")) {
+            document.querySelector("h1.port").remove();
+        } else {
+            const port = document.createElement("h1");
+            port.classList.add("port");
+            port.innerText = location;
+            document.body.appendChild(port);
+        }
+    }
+
+})
+
+setInterval(() => {
+    let result = `Dzisiaj jest:<br>`;
+    let now = new Date();
+    result += now.getFullYear() + "-";
+    now.getMonth() < 10 ? result += "0" + now.getMonth() : result += now.getMonth();
+    now.getDay() < 10 ? result += "-0" + now.getDay() + " " : result += "-" + now.getDay() + " ";
+    now.getHours() < 10 ? result += "0" + now.getHours() + ":" : result += now.getHours() + ":";
+    now.getMinutes() < 10 ? result += "0" + now.getMinutes() + ":" : result += now.getMinutes() + ":";
+    now.getSeconds() < 10 ? result += "0" + now.getSeconds() : result += now.getSeconds();
+    document.querySelector("span.today").innerHTML = result;
+}, 50)
 
 fetch('./dates.json')
     .then(response => response.json())
@@ -105,11 +124,11 @@ fetch('./dates.json')
                 let data = JSON.parse(localStorage.getItem(key));
                 let date = data['date']
                 if (new Date(new Date().getTime + (14 * 24 * 60 * 60 * 1000)) > new Date(date)) {
-                    date = new Date().getFullYear()+1 + "-" + data['date']
+                    date = new Date().getFullYear() + 1 + "-" + data['date']
                 }
-                    const countdown = new Countdown(date, data['name'], data['isNatural'], key);
-                    countdown.start();
-                    document.body.querySelector("div.grid-container").appendChild(countdown.countdown);
+                const countdown = new Countdown(date, data['name'], data['isNatural'], key);
+                countdown.start();
+                document.body.querySelector("div.grid-container").appendChild(countdown.countdown);
 
             }
             document.querySelectorAll("span[class=delete]").forEach((button) => {
@@ -123,29 +142,10 @@ fetch('./dates.json')
         for (i = 0; i < lengthExtFile; i++) {
             let date = new Date().getFullYear() + "-" + json[i]['date']
             if (new Date(new Date().getTime() + (14 * 24 * 60 * 60 * 1000)) > new Date(date)) {
-                date = new Date().getFullYear()+1 + "-" + json[i]['date']
+                date = new Date().getFullYear() + 1 + "-" + json[i]['date']
             }
-                const countdown = new Countdown(date, json[i]['name'], json[i]['isNatural']);
-                countdown.start();
-                document.body.querySelector("div.grid-container").appendChild(countdown.countdown);
+            const countdown = new Countdown(date, json[i]['name'], json[i]['isNatural']);
+            countdown.start();
+            document.body.querySelector("div.grid-container").appendChild(countdown.countdown);
         }
     })
-
-
-
-
-/*saveData({
-    0: {
-        "name": "test",
-        "day": "25",
-        "month": "12",
-        "isNatural": "false"
-    },
-    1: {
-        "name": "test",
-        "day": "25",
-        "month": "12",
-        "isNatural": "false"
-    }
-})
-readData()*/

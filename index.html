@@ -9,11 +9,18 @@
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-        
-        Własny licznik: 
-        <input id="name" placeholder="Nazwa">
-        <input id="date" type="datetime-local">
-        <button class="add" onclick="add()">Dodaj</button>
+        <div class="title">
+            <name>ODLICZANIE</name>
+            <span class="today">Dzisiaj jest:<br>0000-00-00 00:00:00</span>
+        </div>
+        <div class="addform">
+            <span class="nameaddform">Nowy licznik</span>
+            <div class="input-container">
+                <input id="name" placeholder="Nazwa">
+                <input id="date" type="datetime-local" placeholder="Data">
+            </div>
+            <button class="addbutton" onclick="add()">Dodaj</button>
+        </div>
         <hr>
         <div class="grid-container">
         </div>
