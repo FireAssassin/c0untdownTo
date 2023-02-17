@@ -8,19 +8,26 @@
         <script src="./script.js"></script>
         <link rel="stylesheet" href="./style.css">
     </head>
+
     <body>
         <div class="title">
             <name>ODLICZANIE</name>
-            <span class="today">Dzisiaj jest:<br>0000-00-00 00:00:00</span>
+            <span class="today"></span>
         </div>
-        <div class="addform">
-            <span class="nameaddform">Nowy licznik</span>
-            <div class="input-container">
-                <input id="name" placeholder="Nazwa">
-                <input id="date" type="datetime-local" placeholder="Data">
-            </div>
-            <button class="addbutton" onclick="add()">Dodaj</button>
-        </div>
+        <table class="addform">
+            <tr>
+                <td>
+                    <span class="nameaddform">Nowy licznik</span>
+                </td>
+                <td class="input-container">
+                    <input id="name" placeholder="Nazwa">
+                    <input id="date" type="datetime-local" placeholder="Data">
+                </td>
+                <td>
+                    <button class="addbutton" onclick="add()">Dodaj</button>
+                </td>
+            </tr>
+        </table>
         <hr>
         <div class="grid-container">
         </div>

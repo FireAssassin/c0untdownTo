@@ -102,7 +102,7 @@ document.addEventListener("keypress", (e) => {
 })
 
 setInterval(() => {
-    let result = `Dzisiaj jest:<br>`;
+    let result = `Dzisiaj jest: `;
     let now = new Date();
     result += now.getFullYear() + "-";
     now.getMonth() < 10 ? result += "0" + now.getMonth() : result += now.getMonth();

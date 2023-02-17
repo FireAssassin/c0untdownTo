@@ -15,7 +15,7 @@ body {
 }
 
 name {
-    font-size: 6vw;
+    font-size: 4vw;
     /* color: #170bc2; */
     font-variant: small-caps;
 }
@@ -26,24 +26,26 @@ name {
 }
 
 .addform {
-    display: flex;
+    /* display: flex; */
     border: 4px solid #121212;
     border-radius: 8px;
-    padding: 5px;
-
+    padding: 0px;
+    width: 100%;
 }
 
 .nameaddform {
-    width: fit-content;
-    font-size: 4vw;
+    /* width: fit-content; */
+    font-size: 3vw;
 }
 
 .addbutton {
+    /* float: right; */
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 3.75vw;
+    font-size: 3vw;
     padding: 15px;
     background-color: #121212;
-    color: aliceblue
+    color: aliceblue;
+    border: none;
 }
 
 .addbutton:active {
@@ -52,11 +54,13 @@ name {
 
 .grid-container {
     display: flex;
+    margin: 0;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .grid-item {
-    max-width: 46%;
+    max-width: 45%;
     margin: 10px;
     background-color: #ccc;
 }
@@ -88,7 +92,7 @@ input {
     border: 2px solid #1a1a1a;
     border-radius: 5px;
     color: aliceblue;
-    font-size: 3vw;
+    font-size: 2.5vw;
     width: 70%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
