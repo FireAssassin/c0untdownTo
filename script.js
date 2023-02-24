@@ -15,7 +15,7 @@ class Countdown {
         if (this.isnatural == true) {
             this.countdown.innerHTML = `<span class="titlecd">${this.name}</span><br><span class="cd"></span>`;
         } else {
-            this.countdown.innerHTML = `<span class="titlecd">${this.name}</span><span class="delete">Del.</span><br><span class="cd"></span>`;
+            this.countdown.innerHTML = `<span class="titlecd">${this.name}</span><span class="delete">Usuń</span><br><span class="cd"></span>`;
         }
         this.title = this.countdown.querySelector("span.titlecd");
         this.span = this.countdown.querySelector("span.cd");
