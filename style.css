@@ -8,7 +8,7 @@ body {
 
 .title {
     /* display: flex; */
-    border: 4px solid #121212;
+    /* border: 4px solid #121212; */
     border-radius: 8px;
     padding: 5px;
     margin: 0px 0px 3px 0px;
@@ -27,7 +27,7 @@ name {
 
 .addform {
     /* display: flex; */
-    border: 4px solid #121212;
+    /* border: 4px solid #121212; */
     border-radius: 8px;
     padding: 0px;
     width: 100%;
@@ -97,7 +97,7 @@ input {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.input-container:nth-child(1) {
+.input-container:first-child {
     margin: 0px 0px 100px 0px;
 }
 
