@@ -84,6 +84,8 @@ span.delete {
     float: right;
     user-select: none;
     font-size: 3.75vw;
+    color: #f0370e;
+    margin: 0px 0px 0px 50px;
 }
 
 input {
