@@ -16,7 +16,7 @@ body {
 
 name {
     font-size: 4vw;
-    /* color: #170bc2; */
+    color: #ac1a10;
     font-variant: small-caps;
 }
 
@@ -39,7 +39,7 @@ name {
 }
 
 .addbutton {
-    /* float: right; */
+    float: right;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 3vw;
     padding: 15px;
@@ -99,8 +99,8 @@ input {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.input-container:first-child {
-    margin: 0px 0px 100px 0px;
+#name {
+    margin: 0px 0px 3px 0px;
 }
 
 hr {
