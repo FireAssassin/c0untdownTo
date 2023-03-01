@@ -5,11 +5,10 @@ class Countdown {
     constructor(date, name, isNatural, id) {
         this.isnatural = isNatural;
         this.name = name;
-        this.date = date;
         this.id = id;
+        this.date = date;
         this.countdown = document.createElement("div");
         this.countdown.classList.add("countdown");
-        this.countdown.classList.add(makeUniqueClass());
         this.countdown.classList.add("grid-item");
         if (this.id != undefined) this.countdown.id = this.id;
         if (this.isnatural == true) {
@@ -37,7 +36,7 @@ class Countdown {
     }
 
     getTimeLeft() {
-        let total = Date.parse(this.date) - Date.parse(new Date());
+        let total = Date.parse(new Date(getDate(this.date))) - Date.parse(new Date());
         let seconds = Math.floor((total / 1000) % 60);
         let minutes = Math.floor((total / 1000 / 60) % 60);
         let hours = Math.floor((total / (1000 * 60 * 60)) % 24);
@@ -55,17 +54,20 @@ class Countdown {
     }
 }
 
+const getDate = (date) => {
+    let currentyear = new Date().getFullYear()
+    if (new Date(currentyear + "-" + date) > new Date()) {
+        return `${currentyear}-${date}`;
+    } else {
+        return `${currentyear + 1}-${date}`;
+    }
+}
+
 function makeUniqueClass() {
-    this.uniqueClass = "";
-    this.possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (var i = 0; i < 7; i++)
-        this.uniqueClass += this.possible.charAt(Math.floor(Math.random() * this.possible.length));
-    count++;
-    return this.uniqueClass + count;
+    return crypto.randomUUID()
 }
 
 function add() {
-    let clength = localStorage.length;
     let name = document.getElementById("name").value;
     let date = document.getElementById("date").value;
     if (date == "") {
@@ -85,7 +87,54 @@ function remove(todelete) {
     localStorage.removeItem(todelete);
 }
 
-document.addEventListener("keypress", (e) => {
+function sort(json, sort) {//0 - asc 1 - desc
+    let first = json
+    const sortedDates = Object.values(first)
+    if (sort == 0)
+        sortedDates.sort((a, b) => (
+            Date.parse(new Date(getDate(a['date']))) - Date.parse(new Date())
+        ) - (
+                Date.parse(new Date(getDate(b['date']))) - Date.parse(new Date())))
+    else sortedDates.sort((a, b) => (
+        Date.parse(new Date(getDate(a['date']))) - Date.parse(new Date())
+    ) + (
+            Date.parse(new Date(getDate(b['date']))) - Date.parse(new Date())))
+
+    return sortedDates;
+}
+
+async function mergeJSONdata() {
+    let rawJSON = Object.values({});
+    await fetch('./dates.json')
+        .then(response => response.json())
+        .then(json => {
+            console.log(json)
+            for (i = 0; i < Object.keys(json).length; i++) {
+                console.log(json[i])
+                rawJSON.push({
+                    name: json[i]['name'],
+                    date: json[i]['date'],
+                    isNatural: json[i]['isNatural']
+                })
+            }
+            if (localStorage.length > 0) {
+                for (i = 0; i < localStorage.length; i++) {
+                    let index = JSON.parse(localStorage.getItem(localStorage.key(i)));
+                    let date = index['date']
+                    rawJSON.push({
+                        name: index['name'],
+                        date: date.toString().substring(date.toString().search(/[0-9]{2}[-][0-9]{2}[T][0-9]{2}[:][0-9]{2}/)),
+                        isNatural: index['isNatural'],
+                        id: localStorage.key(i)
+                    })
+                }
+            }
+
+        })
+    return rawJSON;
+}
+
+/* document.addEventListener("keypress", (e) => {
     if ((e.code).charAt(3) == "D"
         && e.ctrlKey == true
         && e.shiftKey == true) {
@@ -99,7 +148,7 @@ document.addEventListener("keypress", (e) => {
         }
     }
 
-})
+}) */
 
 setInterval(() => {
     let result = `Dzisiaj jest: `;
@@ -113,39 +162,21 @@ setInterval(() => {
     document.querySelector("span.today").innerHTML = result;
 }, 50)
 
-fetch('./dates.json')
-    .then(response => response.json())
-    .then(json => {
-        const lengthExtFile = Object.keys(json).length;
-        const lengthLocData = localStorage.length;
-        if (lengthLocData > 0) {
-            for (i = 0; i < lengthLocData; i++) {
-                let key = localStorage.key(i);
-                let data = JSON.parse(localStorage.getItem(key));
-                let date = data['date']
-                if (new Date(new Date().getTime + (14 * 24 * 60 * 60 * 1000)) > new Date(date)) {
-                    date = new Date().getFullYear() + 1 + "-" + data['date']
-                }
-                const countdown = new Countdown(date, data['name'], data['isNatural'], key);
-                countdown.start();
-                document.body.querySelector("div.grid-container").appendChild(countdown.countdown);
-
-            }
-            document.querySelectorAll("span[class=delete]").forEach((button) => {
-                button.addEventListener("click", (element) => {
-                    element['target']['parentElement'].remove();
-                    remove(element['target']['parentElement']['id'])
-                });
+async function load() {
+    const lengthLocData = localStorage.length;
+    let SortedJSON = sort(await mergeJSONdata(), 0)
+    SortedJSON.forEach(index => {
+        const countdown = new Countdown(index['date'], index['name'], index['isNatural'], index['id']);
+        countdown.start();
+        document.body.querySelector("div.grid-container").appendChild(countdown.countdown);
+    });
+    if (lengthLocData > 0) {
+        document.querySelectorAll("span[class=delete]").forEach((button) => {
+            button.addEventListener("click", (element) => {
+                element['target']['parentElement'].remove();
+                remove(element['target']['parentElement']['id'])
             });
-        }
-
-        for (i = 0; i < lengthExtFile; i++) {
-            let date = new Date().getFullYear() + "-" + json[i]['date']
-            if (new Date(new Date().getTime() + (14 * 24 * 60 * 60 * 1000)) > new Date(date)) {
-                date = new Date().getFullYear() + 1 + "-" + json[i]['date']
-            }
-            const countdown = new Countdown(date, json[i]['name'], json[i]['isNatural']);
-            countdown.start();
-            document.body.querySelector("div.grid-container").appendChild(countdown.countdown);
-        }
-    })
+        });
+    }
+}
+load()
