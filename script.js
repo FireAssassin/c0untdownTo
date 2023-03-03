@@ -1,5 +1,4 @@
-const key = "V";
-let count = 1;//#f0370e
+//#f0370e
 
 class Countdown {
     constructor(date, name, isNatural, id) {
