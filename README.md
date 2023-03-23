@@ -1,2 +1,2 @@
-# countdownTo
-https://fireassassin.github.io/c0untdownTo/
+# countdown
+https://fireassassin.github.io/countdown/
