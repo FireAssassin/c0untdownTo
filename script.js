@@ -153,8 +153,8 @@ setInterval(() => {
     let result = `Dzisiaj jest: `;
     let now = new Date();
     result += now.getFullYear() + "-";
-    now.getMonth() < 10 ? result += "0" + now.getMonth() : result += now.getMonth();
-    now.getDay() < 10 ? result += "-0" + now.getDay() + " " : result += "-" + now.getDay() + " ";
+    now.getMonth()+1 < 10 ? result += "0" + now.getMonth()+1 : result += now.getMonth()+1;
+    now.getDay() < 10 ? result += "-0" + now.getDate() + " " : result += "-" + now.getDate() + " ";
     now.getHours() < 10 ? result += "0" + now.getHours() + ":" : result += now.getHours() + ":";
     now.getMinutes() < 10 ? result += "0" + now.getMinutes() + ":" : result += now.getMinutes() + ":";
     now.getSeconds() < 10 ? result += "0" + now.getSeconds() : result += now.getSeconds();
